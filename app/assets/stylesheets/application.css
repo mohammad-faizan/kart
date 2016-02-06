@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 .login-container{
 	margin: 50px auto;
 	background-color: #EEEEEE;
@@ -37,4 +38,18 @@
 
 .login-form input.btn{
 	font-size: 20px;
+}
+
+.signup-container{
+	padding: 40px 30px 30px 30px;
+	background-color: #eee;
+}
+
+.sign-up-form{
+
+}
+
+.date_select{
+	width: 30%;
+	margin-right: 10px;
 }

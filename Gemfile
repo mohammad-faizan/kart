@@ -49,3 +49,4 @@ end
 
 gem 'devise'
 gem 'thin'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]

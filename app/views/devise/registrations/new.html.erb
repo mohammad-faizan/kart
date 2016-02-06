@@ -1,29 +1,81 @@
-<h2>Sign up</h2>
+<div class='signup-container'>
+  <div class='row'>
+    <div class='col-sm-6'>
+      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <p>For better service from our side, Please sign up</p>
+    </div>
+    <div class='sign-up-form col-sm-6'>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+        <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+        <div class='form-group'>
+          <%= f.label :email, class: 'control-label col-sm-4' %>
+          <div class='col-sm-8'>
+            <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'Login Email' %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label :password, class: 'control-label col-sm-4' %>
+          <div class='col-sm-8'>
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Login Password' %>
+            <% if @minimum_password_length %>
+            <em class="text-muted">(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label :password_confirmation, class: 'control-label col-sm-4' %>
+          <div class='col-sm-8'>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm Password' %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label :first_name, class: 'control-label col-sm-4' %>
+          <div class='col-sm-8'>
+            <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label :last_name, class: 'control-label col-sm-4' %>
+          <div class='col-sm-8'>
+            <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label :gender, class: 'control-label col-sm-4' %>
+          <div class='col-sm-3'>
+            <%= f.select(:gender, options_for_select([['Male', 'male'],['Female', 'female']]),{}, class: 'form-control') %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label :date_of_birth, class: 'control-label col-sm-4' %>
+          <div class='col-sm-8'>
+            <%= date_select(:dob, nil, {order: [:month, :day, :year], prompt: { day: 'Day', month: 'Month', year: 'Year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {class: 'form-control date_select pull-left'}) %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label ' ', class: 'control-label col-sm-4' %>
+          <div class='col-sm-8'>
+            <%= f.submit "Sign up", class: 'btn btn-primary' %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <%= f.label ' ', class: 'control-label col-sm-4' %>
+          <div class='col-sm-8'>
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
