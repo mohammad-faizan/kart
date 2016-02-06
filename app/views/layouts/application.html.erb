@@ -10,8 +10,10 @@
 		<% flash.each do |key, val| %>
 			<div class="<%= get_alert_class(key) %>" role="alert"><%= val %></div>
 		<% end %>
-		<div class='container'>
+		<%= render 'layouts/header' %>
+		<div class='container body-container'>
 			<%= yield %>
 		</div>
+		<%= render 'layouts/footer' %>
 	</body>
 </html>
